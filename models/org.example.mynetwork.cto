@@ -1,0 +1,46 @@
+/**
+ * My commodity trading network
+ */
+namespace org.example.mynetwork
+
+asset Commodity identified by treeId {
+  o String treeId
+  --> Player owner
+}
+
+enum TreeState {
+  o FOR_SALE
+  o RESERVE_NOT_MET
+  o SOLD
+}
+
+asset TreeList identified by listId {
+  o String listId
+  o Double reservePrice
+  o String description
+  o TreeState state
+  o Offer[] offers optional
+  --> Commodity tree
+}
+
+abstract participant Player identified by playerId {
+  o String playerId
+  o String name
+  o Double balance
+}
+
+participant Buyer extends Player {
+}
+
+participant Seller extends Player {
+}
+
+transaction Offer {
+  o Double price
+  --> TreeList list
+  --> Buyer buyer
+}
+
+transaction Close {
+  --> TreeList list
+}

@@ -1,0 +1,58 @@
+//add two buyers:
+[{
+  "$class": "org.example.mynetwork.Buyer",
+  "playerId": "player001",
+  "name": "hsx",
+  "balance": 1000
+},
+{
+  "$class": "org.example.mynetwork.Buyer",
+  "playerId": "player002",
+  "name": "gj",
+  "balance": 400
+}]
+
+//add a seller:
+{
+  "$class": "org.example.mynetwork.Seller",
+  "playerId": "player003",
+  "name": "lsr",
+  "balance": 1000
+}
+
+//add a tree:
+{
+  "$class": "org.example.mynetwork.Commodity",
+  "treeId": "tree001",
+  "owner": "resource:org.example.mynetwork.Seller#player003"
+}
+
+//add a treelist:
+{
+  "$class": "org.example.mynetwork.TreeList",
+  "listId": "list001",
+  "reservePrice": 500,
+  "description": "Who wants the tree?",
+  "state": "FOR_SALE",
+  "tree": "resource:org.example.mynetwork.Commodity#tree001"
+}
+
+//submit two offers:
+[{
+  "$class": "org.example.mynetwork.Offer",
+  "price": 600,
+  "list": "resource:org.example.mynetwork.TreeList#list001",
+  "buyer": "resource:org.example.mynetwork.Buyer#player001"
+},
+{
+  "$class": "org.example.mynetwork.Offer",
+  "price": 400,
+  "list": "resource:org.example.mynetwork.TreeList#list001",
+  "buyer": "resource:org.example.mynetwork.Buyer#player002"
+}]
+
+//submit a close:
+{
+  "$class": "org.example.mynetwork.Close",
+  "list": "resource:org.example.mynetwork.TreeList#list001"
+}
