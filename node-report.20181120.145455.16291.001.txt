@@ -1,0 +1,239 @@
+================================================================================
+==== Node Report ===============================================================
+
+Event: exception, location: "OnUncaughtException"
+Filename: node-report.20181120.145455.16291.001.txt
+Dump event time:  2018/11/20 14:54:55
+Module load time: 2018/11/20 14:52:12
+Process ID: 16291
+Command line: node /home/shycg/.nvm/versions/node/v8.12.0/bin/composer network start --networkName my-block-chain --networkVersion 0.3.9 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card 
+
+Node.js version: v8.12.0
+(http_parser: 2.8.0, v8: 6.2.414.66, uv: 1.19.2, zlib: 1.2.11, ares: 1.10.1-DEV,
+ modules: 57, nghttp2: 1.32.0, napi: 3, openssl: 1.0.2p, icu: 60.1, unicode: 10.0,
+ cldr: 32.0, tz: 2017c)
+
+node-report version: 2.2.1 (built against Node.js v8.12.0, glibc 2.23, 64 bit)
+
+OS version: Linux 4.15.0-39-generic #42~16.04.1-Ubuntu SMP Wed Oct 24 17:09:54 UTC 2018
+(glibc: 2.23)
+
+Machine: MyThinkPadE450 x86_64
+
+================================================================================
+==== JavaScript Stack Trace ====================================================
+
+WriteStream.emit (events.js:1:1)
+onwriteError (_stream_writable.js:1:1)
+onwrite (_stream_writable.js:1:1)
+_destroy (internal/streams/destroy.js:1:1)
+WriteStream.stderr._destroy (internal/process/stdio.js:1:1)
+WriteStream.destroy (internal/streams/destroy.js:1:1)
+WriteWrap.afterWrite [as oncomplete] (net.js:1:1)
+
+================================================================================
+==== Native Stack Trace ========================================================
+
+ 0: [pc=0x7f924f47e56b] nodereport::OnUncaughtException(v8::Isolate*) [/home/shycg/.nvm/versions/node/v8.12.0/lib/node_modules/composer-cli/node_modules/node-report/api.node]
+ 1: [pc=0xead6e2] v8::internal::Isolate::Throw(v8::internal::Object*, v8::internal::MessageLocation*) [node]
+ 2: [pc=0x10262ad] v8::internal::Runtime_Throw(int, v8::internal::Object**, v8::internal::Isolate*) [node]
+ 3: [pc=0x3ae048b842fd] 
+
+================================================================================
+==== JavaScript Heap and Garbage Collector =====================================
+
+Heap space name: new_space
+    Memory size: 1,048,576 bytes, committed memory: 485,952 bytes
+    Capacity: 1,031,168 bytes, used: 468,544 bytes, available: 562,624 bytes
+Heap space name: old_space
+    Memory size: 34,926,592 bytes, committed memory: 34,609,216 bytes
+    Capacity: 34,099,040 bytes, used: 32,133,696 bytes, available: 1,965,344 bytes
+Heap space name: code_space
+    Memory size: 2,097,152 bytes, committed memory: 1,706,784 bytes
+    Capacity: 1,783,360 bytes, used: 1,528,896 bytes, available: 254,464 bytes
+Heap space name: map_space
+    Memory size: 5,263,360 bytes, committed memory: 4,999,104 bytes
+    Capacity: 5,166,912 bytes, used: 1,460,800 bytes, available: 3,706,112 bytes
+Heap space name: large_object_space
+    Memory size: 2,822,144 bytes, committed memory: 2,822,144 bytes
+    Capacity: 1,456,075,784 bytes, used: 2,778,632 bytes, available: 1,453,297,152 bytes
+
+Total heap memory size: 46,157,824 bytes
+Total heap committed memory: 44,623,200 bytes
+Total used heap memory: 38,370,568 bytes
+Total available heap memory: 1,459,785,696 bytes
+
+Heap memory limit: 1,501,560,832
+
+================================================================================
+==== Resource Usage ============================================================
+
+Process total resource usage:
+  User mode CPU: 2.606790 secs
+  Kernel mode CPU: 0.276295 secs
+  Average CPU Consumption : 1.76876%
+  Maximum resident set size: 130,543,616 bytes
+  Page faults: 5 (I/O required) 45989 (no I/O required)
+  Filesystem activity: 1000 reads 16 writes
+
+Event loop thread resource usage:
+  User mode CPU: 2.180384 secs
+  Kernel mode CPU: 0.233325 secs
+  Average CPU Consumption : 1.4808%
+  Filesystem activity: 1000 reads 16 writes
+
+================================================================================
+==== Node.js libuv Handle Summary ==============================================
+
+(Flags: R=Ref, A=Active)
+Flags  Type      Address             Details
+[-A]   async     0x0000000003c44da0  
+[--]   check     0x00007ffda6d6e440  
+[R-]   idle      0x00007ffda6d6e4b8  
+[--]   prepare   0x00007ffda6d6e530  
+[--]   check     0x00007ffda6d6e5a8  
+[-A]   async     0x000000000217bb40  
+[R-]   timer     0x0000000003c5ddb0  repeat: 0, timeout expired: 5068700 ms ago
+[R-]   tty       0x0000000003c74dc8  , file descriptor: 9, write queue size: 0, writable
+[-A]   signal    0x0000000003c5dbf0  signum: 28 (SIGWINCH)
+[R-]   tty       0x0000000003c75518  , file descriptor: 11, write queue size: 0, writable
+[-A]   async     0x00007f924f686cc0  
+[-A]   signal    0x0000000003d922d0  signum: 6 (SIGABRT)
+[-A]   signal    0x0000000003cedd10  signum: 14 (SIGALRM)
+[-A]   signal    0x0000000003d0a8f0  signum: 1 (SIGHUP)
+[-A]   signal    0x0000000003cdf870  signum: 2 (SIGINT)
+[-A]   signal    0x0000000003ca7170  signum: 15 (SIGTERM)
+[-A]   signal    0x0000000003c83370  signum: 26 (SIGVTALRM)
+[-A]   signal    0x0000000003d0ff50  signum: 24 (SIGXCPU)
+[-A]   signal    0x0000000003d03790  signum: 25 (SIGXFSZ)
+[-A]   signal    0x0000000003d033b0  signum: 12 (SIGUSR2)
+[-A]   signal    0x0000000003d021c0  signum: 5 (SIGTRAP)
+[-A]   signal    0x0000000003cf6e40  signum: 31 (SIGSYS)
+[-A]   signal    0x0000000003bed550  signum: 3 (SIGQUIT)
+[-A]   signal    0x0000000003ce43c0  signum: 6 (SIGABRT)
+[-A]   signal    0x0000000003d0bd10  signum: 29 (SIGIO)
+[-A]   signal    0x0000000003d1a5d0  signum: 29 (SIGIO)
+[-A]   signal    0x0000000003cf7e00  signum: 30 (SIGPWR)
+[-A]   signal    0x0000000003d1ade0  signum: 16 (SIGSTKFLT)
+[-A]   signal    0x0000000003ce2e10  signum: 31 (SIGSYS)
+[RA]   timer     0x0000000003ce2f00  repeat: 0, timeout in: 80 ms
+[R-]   timer     0x0000000003d1ac20  repeat: 0, timeout expired: 162425 ms ago
+[-A]   async     0x00007f924d46ca58  
+[R-]   timer     0x0000000003d12350  repeat: 0, timeout in: 5188146770725989141 ms
+[RA]   prepare   0x00007f924d46c980  
+[R-]   timer     0x0000000003d129c0  repeat: 0, timeout in: 9010025176374315973 ms
+[-A]   tcp       0x0000000003cf6be0  localhost:46196 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 12, write queue size: 0, readable, writable
+[-A]   tcp       0x0000000003cc2920  localhost:46198 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 13, write queue size: 0, readable, writable
+[-A]   timer     0x0000000003c82b40  repeat: 0, timeout in: 197556 ms
+[RA]   timer     0x0000000003c82910  repeat: 0, timeout in: 137590 ms
+[-A]   timer     0x0000000003c5f3c0  repeat: 0, timeout in: 1799 ms
+
+================================================================================
+==== System Information ========================================================
+
+Environment variables
+  LC_PAPER=zh_CN.UTF-8
+  XDG_VTNR=7
+  XDG_SESSION_ID=c2
+  LC_ADDRESS=zh_CN.UTF-8
+  CLUTTER_IM_MODULE=xim
+  LC_MONETARY=zh_CN.UTF-8
+  XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/shycg
+  GPG_AGENT_INFO=/home/shycg/.gnupg/S.gpg-agent:0:1
+  NVM_CD_FLAGS=
+  SHELL=/bin/bash
+  VTE_VERSION=4205
+  TERM=xterm-256color
+  QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+  LC_NUMERIC=zh_CN.UTF-8
+  WINDOWID=77594634
+  GNOME_KEYRING_CONTROL=
+  UPSTART_SESSION=unix:abstract=/com/ubuntu/upstart-session/1000/2380
+  GTK_MODULES=gail:atk-bridge:unity-gtk-module
+  JRE_HOME=/usr/jdk-8/jdk1.8.0_144/jre
+  USER=shycg
+  NVM_DIR=/home/shycg/.nvm
+  QT_ACCESSIBILITY=1
+  LC_TELEPHONE=zh_CN.UTF-8
+  LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+  XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+  XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+  SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+  DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+  XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg
+  PATH=/home/shycg/.nvm/versions/node/v8.12.0/bin:/home/shycg/anaconda3/bin:/home/shycg/.local/share/umake/bin:/home/shycg/bin:/home/shycg/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/jdk-8/jdk1.8.0_144/bin:/snap/bin:/usr/jdk-8/jdk1.8.0_144/bin:/usr/jdk-8/jdk1.8.0_144/jre/bin
+  DESKTOP_SESSION=ubuntu
+  QT_QPA_PLATFORMTHEME=appmenu-qt5
+  QT_IM_MODULE=fcitx
+  LC_IDENTIFICATION=zh_CN.UTF-8
+  JOB=gnome-session
+  PWD=/home/shycg/my-block-chain
+  XDG_SESSION_TYPE=x11
+  JAVA_HOME=/usr/jdk-8/jdk1.8.0_144
+  XMODIFIERS=@im=fcitx
+  LANG=zh_CN.UTF-8
+  GNOME_KEYRING_PID=
+  MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+  GDM_LANG=zh_CN
+  LC_MEASUREMENT=zh_CN.UTF-8
+  IM_CONFIG_PHASE=1
+  COMPIZ_CONFIG_PROFILE=ubuntu
+  PAPERSIZE=a4
+  GDMSESSION=ubuntu
+  GTK2_MODULES=overlay-scrollbar
+  SESSIONTYPE=gnome-session
+  XDG_SEAT=seat0
+  HOME=/home/shycg
+  SHLVL=2
+  LANGUAGE=zh_CN:en
+  GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+  UPSTART_INSTANCE=
+  LOGNAME=shycg
+  XDG_SESSION_DESKTOP=ubuntu
+  UPSTART_EVENTS=started starting
+  QT4_IM_MODULE=fcitx
+  CLASSPATH=.::/usr/jdk-8/jdk1.8.0_144/lib:/usr/jdk-8/jdk1.8.0_144/jre/lib
+  XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop:/var/lib/snapd/desktop
+  DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-WnpomZJREv
+  LESSOPEN=| /usr/bin/lesspipe %s
+  NVM_BIN=/home/shycg/.nvm/versions/node/v8.12.0/bin
+  UPSTART_JOB=unity-settings-daemon
+  INSTANCE=Unity
+  DISPLAY=:0
+  XDG_RUNTIME_DIR=/run/user/1000
+  GTK_IM_MODULE=fcitx
+  XDG_CURRENT_DESKTOP=Unity
+  LC_TIME=zh_CN.UTF-8
+  LESSCLOSE=/usr/bin/lesspipe %s %s
+  XAUTHORITY=/home/shycg/.Xauthority
+  LC_NAME=zh_CN.UTF-8
+  _=/home/shycg/.nvm/versions/node/v8.12.0/bin/composer
+  SUPPRESS_NO_CONFIG_WARNING=y
+  GRPC_SSL_CIPHER_SUITES=ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384
+
+Resource limits                        soft limit      hard limit
+  core file size (blocks)                       0       unlimited
+  data seg size (kbytes)                unlimited       unlimited
+  file size (blocks)                    unlimited       unlimited
+  max locked memory (bytes)                 65536           65536
+  max memory size (kbytes)              unlimited       unlimited
+  open files                              1048576         1048576
+  stack size (bytes)                      8388608       unlimited
+  cpu time (seconds)                    unlimited       unlimited
+  max user processes                        31064           31064
+  virtual memory (kbytes)               unlimited       unlimited
+
+Loaded libraries
+  /lib/x86_64-linux-gnu/libdl.so.2
+  /lib/x86_64-linux-gnu/librt.so.1
+  /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+  /lib/x86_64-linux-gnu/libm.so.6
+  /lib/x86_64-linux-gnu/libgcc_s.so.1
+  /lib/x86_64-linux-gnu/libpthread.so.0
+  /lib/x86_64-linux-gnu/libc.so.6
+  /lib64/ld-linux-x86-64.so.2
+  /home/shycg/.nvm/versions/node/v8.12.0/lib/node_modules/composer-cli/node_modules/node-report/api.node
+  /home/shycg/.nvm/versions/node/v8.12.0/lib/node_modules/composer-cli/node_modules/grpc/src/node/extension_binary/node-v57-linux-x64-glibc/grpc_node.node
+  /lib/x86_64-linux-gnu/libnss_files.so.2
+
+================================================================================

@@ -38,21 +38,30 @@
 }
 
 //submit two offers:
-[{
+{
   "$class": "org.example.mynetwork.Offer",
   "price": 600,
   "list": "resource:org.example.mynetwork.TreeList#list001",
   "buyer": "resource:org.example.mynetwork.Buyer#player001"
-},
+}
+
 {
   "$class": "org.example.mynetwork.Offer",
   "price": 400,
   "list": "resource:org.example.mynetwork.TreeList#list001",
   "buyer": "resource:org.example.mynetwork.Buyer#player002"
-}]
+}
 
 //submit a close:
 {
   "$class": "org.example.mynetwork.Close",
   "list": "resource:org.example.mynetwork.TreeList#list001"
 }
+
+
+composer participant add -c admin@my-block-chain -d '{
+  "$class": "org.example.mynetwork.Buyer",
+  "playerId": "player001",
+  "name": "hsx",
+  "balance": 1000
+}'

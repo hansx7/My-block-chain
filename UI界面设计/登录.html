@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN" >
+<head>
+   <meta charset="utf-8">
+   <title>用户登录</title>
+   <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/主界面.css" type="text/css"/>
+   <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script>
+		$(document).ready(function(){
+				$("button").click(function(){
+					
+					var url="localhost:3000/api/Buyer/";
+					var name=$("#name").val();
+					var passwd=$("#passwd").val();
+					url=url+name+"?filter=%7B%22playerId%22%3A%22"+name+"%22%7D";
+					
+					$.ajax({
+						type:'GET';
+						url:url;
+						async:false;
+						dataType:'json';
+						success:function(data,textStatus,jqXHR){
+							if("true"==data.flag){
+								alert("登录成功！");
+								window.location.href="./主界面.html";//跳转到登录页面
+								return true;
+							}else{
+								alert("登录失败！请重新核对信息！！");
+								return false;
+							}
+						}
+					
+						error:function(XMLHttpRequest,textStatus,erroThrown){
+							alert("请求失败！");
+						}				
+					});
+					
+					//或者如下：
+					$.post(url,
+						{//json文件},
+						function(data,status){
+							alert("数据："+data+"\n状态："+status);
+						}
+					);
+					
+					
+				});
+				
+			});
+   </script>
+</head>
+<body>
+	<div class="row" style="height:50%; width:50%;margin-left:450px; margin-top:100px;">
+		<div style="border-right:1px solid #ddd;">
+			<div class="well col-md-7">
+				<div class="well well-xs" style="margin:15px 15px 15px 15px;">
+					<img src="./pic/myicon.gif" class="img-thumbnail img-responsible">
+				</div>
+				
+				<div class="input-group input-group-md">
+					<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+					<input id="name" type="text" class="form-control" placeholder="用户名" aria-describedby="sizing-addon1">
+				</div>
+				
+				<div class="input-group input-group-md">
+					<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-lock"></i></span>
+					<input id="passwd" type="password" class="form-control" placeholder="密码" aria-describedby="sizing-addon1">
+				</div>
+				
+				<div class="btn-group btn-group-justified">
+					<a href="#"><button type="submit" class="btn btn-success btn-block">登录</button></a>
+					<a href="./Register.html"><button type="register" class="btn btn-success btn-block">注册</button></a>
+				</div>
+					
+			</div>
+		</div>
+	<div class="col-md-6">
+</body>
+</html>

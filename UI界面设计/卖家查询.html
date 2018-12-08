@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+	描述：使用html5设计一个用户注册表单
+	这个注册表单包含了一下的字段信息:
+	1、用户邮箱(作为用户名):userEmail;
+	2、用户手机: userPhone;
+	3、用户密码：  userPassword;
+	4、验证密码: reUserPassword;
+	
+	接下来是一个注册按钮。
+	在这里使用到了bootstrap2.0和jquery1.8.3
+-->
+<html>
+	<head>
+		<title>卖家查询</title>
+		<!--描述：引入bootstrap和jquery（由于bootstrap的js是依赖于jquery实现的，因此在导入bootstrap.min.js之前应该先引入jquery）-->
+        <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#query").click(function(){
+					
+					var url="http://localhost:3000/api/Seller/";
+
+					url+=$("#playerID").val();
+					
+
+					$.ajax({
+						type:'GET',
+						url:url,
+						async:true,
+						     
+						success:function(json){
+							$("#tb").html("<tr><th align='center'>treeId</th><th align='center'>owner</th><th align='center'>balance</th></tr>");
+
+
+							var data=eval(json);
+
+								var playerId = json.playerId;
+								var name = json.name;
+								var balance=json.balance;
+								var value ="<tr><td align='center'>"+playerId+"</td><td align='center'>"+name+"</td><td align='center'>"+balance+"</td><tr/>";
+								
+							$("#tb").append(value);							
+
+					
+							
+							alert("success");
+							
+						},
+					
+					
+						error:function(XMLHttpRequest,textStatus,erroThrown){
+							alert("查询失败！");
+						}				
+						
+						
+					});
+
+					
+				});
+				
+			});
+		</script>
+        
+        <!--描述：引入外部样式表-->
+        <link rel="stylesheet" href="css/register.css" type="text/css"/>
+		<meta charset="utf-8" />
+		<title>user register block</title>
+	</head>
+	<body>
+		<!--描述：编写用户注册表单-->
+        	<form class="form-horizontal" action="" id="userRegister" method="post"> 
+	        	<div class="well" style="text-align:center;">
+				<h1>卖家查询</h1>
+	        		<div class="input-group input-group-md success" style="margin-left:200px;margin-right:200px;">
+					    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						<input id="playerID" type="text" class="form-control" placeholder="请输入买家ID">
+				    </div>
+					<div class="btn-group">
+					    <input type="button" id="query" class="btn btn-success btn-default" value="点击">
+						<button class="btn btn-success btn-default"><a href="./主页面.html">主页</a></button>
+				    </div>
+	        		<form>
+						<div class="form-group" style="padding-left:30px; padding-right:30px;">
+						  <label for="comment">信息如下</label>
+						  <table  id="tb" width="80%" border="1" cellspacing="0" cellpadding="0"  align="center" style="text-align:center;">
+						    <tr>
+							<th align="center">playerId</th>
+							<th align="center">name</th>
+							<th align="center">balance</th>
+						    </tr>
+						</table>
+
+						</div>
+					  
+	        	</div>
+	        </form>
+	</body>
+</html>

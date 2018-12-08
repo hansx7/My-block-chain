@@ -3,44 +3,44 @@
  */
 namespace org.example.mynetwork
 
-asset Commodity identified by treeId {
+asset Commodity identified by treeId {  //一棵树的类
   o String treeId
   --> Player owner
 }
 
-enum TreeState {
+enum TreeState {  //一棵树的状态：在售、没有达到最低价、已售出
   o FOR_SALE
   o RESERVE_NOT_MET
   o SOLD
 }
 
-asset TreeList identified by listId {
+asset TreeList identified by listId {  //在售中的树
   o String listId
   o Double reservePrice
   o String description
   o TreeState state
-  o Offer[] offers optional
+  o Offer[] offers optional  //报价的数组，可选项
   --> Commodity tree
 }
 
-abstract participant Player identified by playerId {
+abstract participant Player identified by playerId {  //虚类，参与者统称玩家
   o String playerId
   o String name
   o Double balance
 }
 
-participant Buyer extends Player {
+participant Buyer extends Player {  //买家，继承自玩家
 }
 
-participant Seller extends Player {
+participant Seller extends Player {  //卖家，继承自玩家
 }
 
-transaction Offer {
+transaction Offer {  //报价的类
   o Double price
   --> TreeList list
   --> Buyer buyer
 }
 
-transaction Close {
+transaction Close {  //关闭交易的类
   --> TreeList list
 }

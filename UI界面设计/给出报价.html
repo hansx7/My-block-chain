@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+	描述：使用html5设计一个用户注册表单
+	这个注册表单包含了一下的字段信息:
+	1、用户邮箱(作为用户名):userEmail;
+	2、用户手机: userPhone;
+	3、用户密码：  userPassword;
+	4、验证密码: reUserPassword;
+	
+	接下来是一个注册按钮。
+	在这里使用到了bootstrap2.0和jquery1.8.3
+-->
+<html>
+	<head>
+		<title>给出报价</title>
+		<!--描述：引入bootstrap和jquery（由于bootstrap的js是依赖于jquery实现的，因此在导入bootstrap.min.js之前应该先引入jquery）-->
+        <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#submit").click(function(){
+					
+					var url="http://localhost:3000/api/Offer";
+					var buyer=$("#buyer").val();
+					var quote=$("#quote").val();
+					var price=parseFloat(quote);
+	
+					var tree=$("#tree").val();
+					buyer="resource:org.example.mynetwork.Buyer#"+buyer;
+					tree="resource:org.example.mynetwork.TreeList#"+tree;
+					
+					$.ajax({
+						type:'POST',
+						url:url,
+						data:JSON.stringify({
+							  "$class": "org.example.mynetwork.Offer",
+							  "price": price,
+							  "list": tree,
+							  "buyer": buyer
+							
+						}),
+						dataType:'json',
+						contentType:"application/json;charset=utf-8",
+						async:true,
+						success:function(data,textStatus,jqXHR){
+							alert("状态码："+textStatus)
+						},
+					
+						error:function(XMLHttpRequest,textStatus,erroThrown){
+							alert("请求失败！");
+						}				
+						
+						
+					});
+					
+				});
+				
+			});
+		</script>
+        
+        <!--描述：引入外部样式表-->
+        <link rel="stylesheet" href="css/register.css" type="text/css"/>
+		<meta charset="utf-8" />
+		<title>user register block</title>
+	</head>
+	<body>
+		<!--描述：编写用户注册表单-->
+        	<form class="form-horizontal" action="" id="userRegister" method="post">
+	        	<div class="well" style="text-align:center;">
+					<div class="jumbotron">
+						<div class="container">
+							<h1>给出报价</h1>
+						</div>
+					</div>
+	        		<div class="input-group input-group-md success" style="margin-left:200px;margin-right:200px;">
+					    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						<input id="buyer" type="text" class="form-control" placeholder="请输入用户名">
+				    </div>
+				    <div class="input-group input-group-md success" style="margin-left:200px;margin-right:200px;">
+					    <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+						<input id="quote" type="number" class="form-control" placeholder="请输入报价">
+				    </div>
+					<div class="input-group input-group-md success" style="margin-left:200px;margin-right:200px;">
+					    <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+						<input id="tree" type="text" class="form-control" placeholder="请输入想要的树">
+				    </div>
+					<!-- <div class="input-group input-group-md success">
+					    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+						<input id="passwd" type="text" class="form-control" placeholder="请输入密码">
+				    </div>
+				    <div class="input-group input-group-md success">
+					    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+						<input type="text" class="form-control" placeholder="请确认密码">
+				    </div> -->
+				    <div class="btn-group">
+					    <input type="button" id="submit" class="btn btn-success btn-default" value="提交">
+						<button class="btn btn-info btn-default"><a href="./主页面.html">主页</a></button>
+				    </div>
+	        	</div>
+	        </form>
+	</body>
+</html>

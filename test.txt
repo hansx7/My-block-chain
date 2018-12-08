@@ -1,0 +1,123 @@
+#创建各个用户——linux命令行运行
+composer participant add -c admin@car-supplychain-network -d '{
+  "$class": "org.dylan.carsupplychain.AutoBodyManufacturer",
+  "memberId": "AutoBody1",
+  "name": "alice",
+  "address": {
+    "$class": "org.dylan.carsupplychain.Address",
+    "country": "china",
+    "city": "dg",
+    "street": "hh",
+    "streetNo": "hh"
+  }
+}'
+
+composer participant add -c admin@car-supplychain-network -d '{
+  "$class": "org.dylan.carsupplychain.CarManufacturer",
+  "memberId": "Car1",
+  "name": "bob",
+  "address": {
+    "$class": "org.dylan.carsupplychain.Address",
+    "country": "china",
+    "city": "hz",
+    "street": "ss",
+    "streetNo": "ss"
+  }
+}'
+
+composer participant add -c admin@car-supplychain-network -d '{
+  "$class": "org.dylan.carsupplychain.ChassisManufacturer",
+  "memberId": "Chassis1",
+  "name": "Tom",
+  "address": {
+    "$class": "org.dylan.carsupplychain.Address",
+    "country": "china",
+    "city": "shh",
+    "street": "qq",
+    "streetNo": "qq"
+  }
+}'
+
+composer participant add -c admin@car-supplychain-network -d '{
+  "$class": "org.dylan.carsupplychain.EngineManufacturer",
+  "memberId": "Engine1",
+  "name": "jack",
+  "address": {
+    "$class": "org.dylan.carsupplychain.Address",
+    "country": "china",
+    "city": "hk",
+    "street": "jj",
+    "streetNo": "jj"
+  }
+}'
+
+composer participant add -c admin@car-supplychain-network -d '{
+  "$class": "org.dylan.carsupplychain.EquipmentManufacturer",
+  "memberId": "Equipment1",
+  "name": "Amy",
+  "address": {
+    "$class": "org.dylan.carsupplychain.Address",
+    "country": "chine",
+    "city": "mk",
+    "street": "ee",
+    "streetNo": "ee"
+  }
+}'
+
+#注册各个用户——linux命令行运行
+composer identity issue -c admin@car-supplychain-network -f alice.card -u alice -a "resource:org.dylan.carsupplychain.AutoBodyManufacturer#AutoBody1"
+composer identity issue -c admin@car-supplychain-network -f bob.card -u bob -a "resource:org.dylan.carsupplychain.CarManufacturer#Car1"
+composer identity issue -c admin@car-supplychain-network -f tom.card -u tom -a "resource:org.dylan.carsupplychain.ChassisManufacturer#Chassis1"
+composer identity issue -c admin@car-supplychain-network -f Amy.card -u Amy -a "resource:org.dylan.carsupplychain.EquipmentManufacturer#Equipment1"
+composer identity issue -c admin@car-supplychain-network -f jack.card -u jack -a "resource:org.dylan.carsupplychain.EngineManufacturer#Engine1"
+
+
+#创建原材料例子——composer-rest-server上运行
+{
+  "$class": "org.dylan.carsupplychain.AutoBodyCreation",
+  "manufacturer": "org.dylan.carsupplychain.AutoBodyManufacturer#AutoBody1",
+  "data": {
+    "$class": "org.dylan.carsupplychain.autoBodyProperties",
+    "material": "hhhh",
+    "type": "hhh"
+  }
+}
+
+{
+  "$class": "org.dylan.carsupplychain.CarCreation",
+  "manufacturer": "org.dylan.carsupplychain.CarManufacturer#Car1",
+  "legalIdDocument": "hh"
+}
+
+
+{
+  "$class": "org.dylan.carsupplychain.ChassisCreation",
+  "manufacturer": "org.dylan.carsupplychain.ChassisManufacturer#Chassis1",
+  "data": {
+    "$class": "org.dylan.carsupplychain.ChassisProperties",
+    "rigidity": 0,
+    "suspensionStrenth": 0
+  }
+}
+
+{
+  "$class": "org.dylan.carsupplychain.ElecEquipmentCreation",
+  "manufacturer": "org.dylan.carsupplychain.EquipmentManufacturer#Equipment",
+  "data": {
+    "$class": "org.dylan.carsupplychain.ElecEquipProperties",
+    "batteryBrand": "hhhh"
+  }
+}
+
+{
+  "$class": "org.dylan.carsupplychain.EngineCreation",
+  "manufacturer": "org.dylan.carsupplychain.EngineManufacturer#Engine1",
+  "data": {
+    "$class": "org.dylan.carsupplychain.EngineProperties",
+    "brand": "h",
+    "model": "h",
+    "horsePower": 0,
+    "cubicCapacity": 0,
+    "cylindersAmount": 0
+  }
+}

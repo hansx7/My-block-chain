@@ -1,0 +1,44 @@
+/**
+ * Access control rules for tutorial-network
+ */
+rule Default {
+    description: "Allow all participants access to all resources"
+    participant: "ANY"
+    operation: ALL
+    resource: "org.example.mynetwork.*"
+    action: ALLOW
+}
+
+rule SystemACL {
+    description:  "System ACL to permit all access"
+    participant: "ANY"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+rule Seller1 {  //不允许卖家关闭不属于自己的交易
+    description:  "Sellers cannot close other sellers' lists."
+    participant(s): "org.example.mynetwork.Seller"
+    operation: CREATE
+    resource(t): "org.example.mynetwork.TreeList"
+    transaction: "org.example.mynetwork.Close"
+    condition: (t.tree.owner.playerId != s.playerId)
+    action: DENY
+}
+
+rule Buyer1 {  //允许买家读取网络中的一切数据
+    description:  "Buyers can read all things."
+    participant: "org.example.mynetwork.Buyer"
+    operation: READ
+    resource: "org.example.mynetwork.*"
+    action: ALLOW
+}
+
+rule Buyer2 {  //不允许买家增删改一棵树
+    description: "Buyers cannot create or update or delete a tree."
+    participant: "org.example.mynetwork.Buyer"
+    operation: CREATE, UPDATE, DELETE
+    resource: "org.example.mynetwork.Commodity"
+    action: DENY
+}

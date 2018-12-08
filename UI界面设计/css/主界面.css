@@ -1,0 +1,45 @@
+			/* body
+			{
+				height:100%;
+				background-image:url('../pic/login_bg.jpg');
+				background-size:cover;
+			} */
+			
+			span
+			{
+				width: 300px;
+				height: 200px;
+				left: 50%;
+				background-image: -webkit-linear-gradient(left,blue,#66ffff 10%,#cc00ff 20%,#CC00CC 30%, #CCCCFF 40%, #00FFFF 50%,#CCCCFF 60%,#CC00CC 70%,#CC00FF 80%,#66FFFF 90%,blue 100%);
+					-webkit-text-fill-color: transparent;/* 将字体设置成透明色 */
+					-webkit-background-clip: text;/* 裁剪背景图，使文字作为裁剪区域向外裁剪 */
+					-webkit-background-size: 200% 100%; 
+					-webkit-animation: masked-animation 4s linear infinite;
+				font-size: 90px;
+				letter-spacing:15px;
+				font-weight:bold;
+				font-family: "宋体",sans-serif; /* “Arial”,”Microsoft YaHei”,”黑体”,”宋体”,sans-serif; */
+			}
+			@keyframes masked-animation {
+				0% {
+					background-position: 0  0;
+				}
+				100% {
+					background-position: -100%  0;
+				}
+			}
+			
+			img
+			{
+				display: inline-block;
+				border: 30px solid #ddd;
+				border-radius: 4px;
+				padding: 30px;
+				transition: 0.3s;
+				width:100%;
+				height:750px;
+			}
+			img:hover {
+				box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+			}
+			

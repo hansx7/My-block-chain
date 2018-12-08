@@ -1,0 +1,15 @@
+83ec6ac1b680af9f0de0
+83db5c17e7939f0bc2c805d28c81b6c6639d2f05
+
+export COMPOSER_PROVIDERS='{
+  "github": {
+    "provider": "github",
+    "module": "passport-github",
+    "clientID": "83ec6ac1b680af9f0de0",
+    "clientSecret": "83db5c17e7939f0bc2c805d28c81b6c6639d2f05",
+    "authPath": "/auth/github",
+    "callbackURL": "/auth/github/callback",
+    "successRedirect": "/",
+    "failureRedirect": "/"
+  }
+}'

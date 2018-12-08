@@ -1,0 +1,37 @@
+/** Sample queries for Commodity Trading business network
+*/
+
+query selectTrees {  //选择所有树
+  description: "Select all trees."
+  statement:
+      SELECT org.example.mynetwork.Commodity
+}
+
+query selectTreesForSale {  //选择正在出售的树
+  description: "Select all trees that are for sale."
+  statement:
+      SELECT org.example.mynetwork.TreeList
+          WHERE (state == 'FOR_SALE')
+}
+
+query selectOffers {  //测试用
+  description: "Select all the offers."
+  statement:
+      SELECT org.example.mynetwork.Offer
+          WHERE (list.listId == "list001")
+}
+
+query selectOffers2 {  //选择对应编号的列表
+  description: "Select all the offers."
+  statement:
+      SELECT org.example.mynetwork.TreeList
+          WHERE (listId == _$listId)
+}
+
+query selectOffers3 {  //测试用
+  description: "Select all the offers."
+  statement:
+      SELECT org.example.mynetwork.TreeList
+          WHERE (listId == "list001")
+}
+
